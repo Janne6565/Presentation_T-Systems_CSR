@@ -147,6 +147,7 @@ const connectWebsocketListen = () => {
         if (indexNow < currentInfo.index) {
           console.log("GIVE ME THE PREVIOUS SLIDE HEHE")
           presenter.requestPreviousSlide();
+          presenter.resume();
         }
       }
     // } catch (ignored) {
