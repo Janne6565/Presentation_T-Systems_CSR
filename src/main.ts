@@ -135,6 +135,7 @@ const connectWebsocketListen = () => {
           if (indexNow > currentInfo.index + 1) {
             presenter.requestNextSlide();
           }
+
           presenter.resume();
           console.log(
             "Jumping to next slide because ",
@@ -144,11 +145,12 @@ const connectWebsocketListen = () => {
           );
         }
         if (indexNow < currentInfo.index) {
+          console.log("GIVE ME THE PREVIOUS SLIDE HEHE")
           presenter.requestPreviousSlide();
         }
       }
     } catch (ignored) {
-      console.log(ignored);
+      console.log("Error occurerd:", ignored);
     }
   };
 };
