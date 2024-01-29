@@ -171,13 +171,17 @@ presenter.onInfoChanged.subscribe((info) => {
   }
 });
 
+presenter.onStateChanged.subscribe((state) => {
+  console.log(state);
+});
+
 presenter.present({
   name: "Presenter",
   background: null,
   size: new Vector2(1920, 1080),
   slide: project.scenes[0].name,
   fps: 60,
-  resolutionScale: 2,
+  resolutionScale: 1,
   colorSpace: "srgb",
 });
 
