@@ -123,20 +123,20 @@ const connectWebsocketListen = () => {
     }
 
     // try {
-      const indexNow = parseInt(message.data);
-      currentIndexShouldBe = indexNow;
+    const indexNow = parseInt(message.data);
+    currentIndexShouldBe = indexNow;
 
-      if (currentInfo && currentInfo.index != null) {
-        if (indexNow > currentInfo.index) {
-          if (indexNow > currentInfo.index + 1) {
-            presenter.requestNextSlide();
-          }
-          presenter.resume();
+    if (currentInfo && currentInfo.index != null) {
+      if (indexNow > currentInfo.index) {
+        if (indexNow > currentInfo.index + 1) {
+          presenter.requestNextSlide();
         }
-        if (indexNow < currentInfo.index) {
-          presenter.requestPreviousSlide();
-        }
+        presenter.resume();
       }
+      if (indexNow < currentInfo.index) {
+        presenter.requestPreviousSlide();
+      }
+    }
     // } catch (ignored) {
     //   console.log("Error occurerd:", ignored);
     // }

@@ -138,7 +138,7 @@ export default makeScene2D(function* (view) {
 
   yield* all(csrImage().y(0, 1));
 
-  yield* beginSlide("Clean up Einleitung");
+  yield beginSlide("Clean up Einleitung");
 
   yield* all(
     backgroundTree1().y(1000, 1),
