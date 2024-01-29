@@ -22,6 +22,8 @@ import CSR_image from "./assets/intro/CSR.svg";
 import executiveBoardTogetherImage from "./assets/intro/ExecutiveBoard.png";
 import superVisoryBoardLeftSideImage from "./assets/intro/SupervisoryBoardLeftSide.png";
 
+import verdiLogo from "./assets/intro/verdiLogo.svg";
+
 export default makeScene2D(function* (view) {
   // Create your animations here
   const background = createRef<Rect>();
@@ -198,6 +200,8 @@ export default makeScene2D(function* (view) {
     delay(1, executiveBoardHeading().text("Supervisory Board", 1))
   );
 
+	exceutiveBoardImages().remove();
+
   const supervisoryBoardImage = createRef<Img>();
   view.add(
     <Img
@@ -207,7 +211,7 @@ export default makeScene2D(function* (view) {
       y={50}
       opacity={0}
       width={view.width() * 0.5}
-      radius={5}
+      radius={20}
       smoothCorners={true}
     />
   );
@@ -243,8 +247,8 @@ export default makeScene2D(function* (view) {
       closed
       lineWidth={5}
     >
-      <Knot x={0} y={-250}/>
-      <Knot x={0} y={450}/>
+      <Knot x={0} y={-250} />
+      <Knot x={0} y={450} />
     </Spline>
   );
   lineBetween().start(0).end(0);
@@ -254,6 +258,34 @@ export default makeScene2D(function* (view) {
     lineBetween().end(1, 1),
   );
 
+
+  const verdiIcon = createRef<Img>();
+  view.add(<Img ref={verdiIcon} src={verdiLogo}
+    opacity={0}
+    scale={1}
+    y={-120}
+    x={500} />)
+  
+	const tSystemsIcon = createRef<Img>();
+	const telekomIcon = createRef<Img>();
+	
+	view.add(<Img ref={tSystemsIcon} src={tsystemsLogo}
+		opacity={0}
+		scale={1}
+		y={220}
+		x={550}
+	/>);
+	view.add(<Img ref={telekomIcon} src={telekomLogo}
+		opacity={0}
+		scale={0.38}
+		y={210}
+		x={210}/>);
+
+	yield* all(
+		verdiIcon().opacity(1, 1),
+		tSystemsIcon().opacity(1, 1),
+		telekomIcon().opacity(1, 1),
+	)
 
   yield beginSlide("End");
 });
