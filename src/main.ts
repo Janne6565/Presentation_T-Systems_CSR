@@ -6,6 +6,29 @@ import {
 } from "@motion-canvas/core";
 import projectImport from "../public/animations/project.js";
 
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 const LOBBY_NAME = "t-systems";
 
 const project: Project = projectImport;
@@ -84,6 +107,7 @@ const connectWebsocketSend = () => {
     if (message == "authorized") {
       console.log("You are in");
       console.log("authorized");
+      setCookie("password_" + LOBBY_NAME, providedPassword, 30);
       IS_OWNER = true;
       takeControllButton.classList.add("isOwner");
       receivedAutherized = true;
@@ -217,6 +241,11 @@ takeControllButton.onclick = () => {
 };
 takeControllButton.classList.add("takecontrollButton");
 takeControllButton.classList.add("invisible");
+
+if (getCookie("password_" + LOBBY_NAME)) {
+  providedPassword = getCookie("password_" + LOBBY_NAME);
+  connectWebsocketSend();
+}
 
 window.addEventListener("keydown", (event) => {
   const keyCode = event.keyCode;
