@@ -136,11 +136,11 @@ export default makeScene2D(function* (view) {
   );
 
   makeShadow(csrImage, 50);
-  yield beginSlide("Show CSR Icon");
+  yield* beginSlide("Show CSR Icon");
 
   yield* all(csrImage().y(0, 1));
 
-  yield beginSlide("Clean up Einleitung");
+  yield* beginSlide("Clean up Einleitung");
 
   yield* all(
     backgroundTree1().y(1000, 1),
@@ -159,7 +159,7 @@ export default makeScene2D(function* (view) {
   windmillRefs().remove();
   csrImage().remove();
 
-  yield beginSlide("Show Executive Board");
+  yield* beginSlide("Show Executive Board");
 
   const executiveBoardHeading = createRef<Txt>();
   const exceutiveBoardImages = createRef<Img>();
@@ -193,7 +193,7 @@ export default makeScene2D(function* (view) {
     delay(1, exceutiveBoardImages().opacity(1, 2))
   );
 
-  yield beginSlide("Show Supervisory Board");
+  yield* beginSlide("Show Supervisory Board");
 
   yield* all(
     exceutiveBoardImages().opacity(0, 1),
@@ -287,5 +287,5 @@ export default makeScene2D(function* (view) {
 		telekomIcon().opacity(1, 1),
 	)
 
-  yield beginSlide("End");
+  yield* beginSlide("End");
 });
