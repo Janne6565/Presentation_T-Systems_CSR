@@ -22,7 +22,6 @@ let lastMouseMove: number | null = null;
 
 const ownerControllMappings = {
   32: () => {
-    console.log(ownerSocket);
     if (currentInfo && currentInfo.isWaiting) {
       ownerSocket?.send(String(currentIndexShouldBe + 1));
     }
@@ -66,10 +65,9 @@ const connectWebsocketSend = () => {
 
   ownerSocket.onclose = () => {
     if (receivedAutherized) {
-      console.log("Websocket closed -> trying to reconnect");
       connectWebsocketSend();
     } else {
-      console.log("Closed because unauthorized");
+      console.log("Closed websocket because unauthorized");
     }
   };
 
@@ -116,8 +114,6 @@ const connectWebsocketListen = () => {
   };
 
   socket.onmessage = (message) => {
-    console.log("Received message", message);
-
     if (lastMouseMove != null && lastMouseMove < Date.now() - 3000) {
       fullScreenButton.classList.add("invisible");
       document.getElementsByTagName("body")[0].classList.add("mouseHide");
@@ -129,25 +125,16 @@ const connectWebsocketListen = () => {
     // try {
       const indexNow = parseInt(message.data);
       currentIndexShouldBe = indexNow;
-      console.log(presenter);
-      console.log(currentInfo);
+
       if (currentInfo && currentInfo.index != null) {
         if (indexNow > currentInfo.index) {
           if (indexNow > currentInfo.index + 1) {
             presenter.requestNextSlide();
           }
           presenter.resume();
-          console.log(
-            "Jumping to next slide because ",
-            indexNow,
-            " > ",
-            currentInfo.index
-          );
         }
         if (indexNow < currentInfo.index) {
-          console.log("GIVE ME THE PREVIOUS SLIDE HEHE")
           presenter.requestPreviousSlide();
-          presenter.resume();
         }
       }
     // } catch (ignored) {
