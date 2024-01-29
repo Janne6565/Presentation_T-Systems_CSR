@@ -126,16 +126,16 @@ const connectWebsocketListen = () => {
       document.getElementsByTagName("body")[0].classList.remove("mouseHide");
     }
 
-    try {
+    // try {
       const indexNow = parseInt(message.data);
       currentIndexShouldBe = indexNow;
+      console.log(presenter);
       console.log(currentInfo);
       if (currentInfo && currentInfo.index != null) {
         if (indexNow > currentInfo.index) {
           if (indexNow > currentInfo.index + 1) {
             presenter.requestNextSlide();
           }
-
           presenter.resume();
           console.log(
             "Jumping to next slide because ",
@@ -149,9 +149,9 @@ const connectWebsocketListen = () => {
           presenter.requestPreviousSlide();
         }
       }
-    } catch (ignored) {
-      console.log("Error occurerd:", ignored);
-    }
+    // } catch (ignored) {
+    //   console.log("Error occurerd:", ignored);
+    // }
   };
 };
 
