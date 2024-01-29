@@ -2,8 +2,8 @@ import { defineConfig } from "vite";
 import motionCanvas from "@motion-canvas/vite-plugin";
 
 export default defineConfig({
-  // base: "/Presentation_T-Systems_CSR/public/animations/",
-  base: "/public/animations/",
+  base: "/Presentation_T-Systems_CSR/public/animations/",
+  // base: "/public/animations/",
   plugins: [
     motionCanvas({
       project: ["./src/project.ts"],
