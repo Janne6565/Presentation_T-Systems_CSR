@@ -287,5 +287,7 @@ export default makeScene2D(function* (view) {
 		telekomIcon().opacity(1, 1),
 	)
 
+	
+
   yield* beginSlide("End");
 });
