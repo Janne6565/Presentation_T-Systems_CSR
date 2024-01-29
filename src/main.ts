@@ -128,15 +128,13 @@ const connectWebsocketListen = () => {
 
     if (currentInfo && currentInfo.index != null) {
       if (indexNow > currentInfo.index) {
-        presenter.playback.speed = 1;
         if (indexNow > currentInfo.index + 1) {
           presenter.requestNextSlide();
         }
         presenter.resume();
       }
       if (indexNow < currentInfo.index) {
-        presenter.resume();
-        presenter.playback.speed = -1;
+        presenter.requestPreviousSlide();
       }
     }
     // } catch (ignored) {
