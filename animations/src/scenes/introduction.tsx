@@ -479,6 +479,70 @@ export default makeScene2D(function* (view) {
 
   yield* textTheIdea4().opacity(1, 1);
 
+  yield* beginSlide("Cleanup - fiete - The Idea");
+
+  yield* all(
+    imageTheIdea1().opacity(0, 1),
+    imageTheIdea2().opacity(0, 1),
+    imageTheIdea3().opacity(0, 1),
+    imageTheIdea4().opacity(0, 1),
+    textTheIdea1().opacity(0, 1),
+    textTheIdea2().opacity(0, 1),
+    textTheIdea3().opacity(0, 1),
+    textTheIdea4().opacity(0, 1),
+    heading().text("", 1),
+  );
+
+
+  imageTheIdea1().remove();
+  imageTheIdea2().remove();
+  imageTheIdea3().remove();
+  imageTheIdea4().remove();
+  textTheIdea1().remove();
+  textTheIdea2().remove();
+  textTheIdea3().remove();
+  textTheIdea4().remove();
+
+  const requirementsText1 = createRef<Txt>();
+  const requirementsText2 = createRef<Txt>();
+  const requirementsText3 = createRef<Txt>();
+  view.add(<Txt ref={requirementsText1} text="Data Collection" x={-500} y={-50} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={requirementsText2} text="Overview" x={-500} y={100} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={requirementsText3} text="Evaluation" x={-500} y={250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  const requirementsKlammer = createRef<Txt>();
+  view.add(<Txt ref={requirementsKlammer} text="}" x={-100} y={90} fontWeight={200} fontSize={600} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  yield* beginSlide("Fiete - Requirements");
+
+  yield* heading().text("Requirements", 1);
+
+  yield* requirementsText1().opacity(1, 1);
+  yield* requirementsText2().opacity(1, 1);
+  yield* requirementsText3().opacity(1, 1);
+
+  yield* beginSlide("Fiete - Requirements - Klammer");
+
+  yield* requirementsKlammer().opacity(1, 1);
+
+  const requirementsImage = createRef<Img>();
+  view.add(<Img ref={requirementsImage} src={fieteRequirements} scale={1} y={100} x={300} opacity={0} radius={50}/>);
+  makeShadow(requirementsImage, 50);
+
+  yield* all(
+    requirementsImage().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - fiete - Requirements");
+
+  yield* all(
+    requirementsText1().opacity(0, 1),
+    requirementsText2().opacity(0, 1),
+    requirementsText3().opacity(0, 1),
+    requirementsKlammer().opacity(0, 1),
+    requirementsImage().opacity(0, 1),
+    heading().text("", 1),
+  );
+
+
 
   yield* beginSlide("End");
 });
