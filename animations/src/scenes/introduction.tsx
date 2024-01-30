@@ -218,7 +218,7 @@ export default makeScene2D(function* (view) {
     delay(1, heading().text("Supervisory Board", 1))
   );
 
-	exceutiveBoardImages().remove();
+  exceutiveBoardImages().remove();
 
   yield* beginSlide("Show Supervisory Board");
 
@@ -288,27 +288,27 @@ export default makeScene2D(function* (view) {
     scale={1}
     y={-120}
     x={500} />)
-  
-	const tSystemsIcon = createRef<Img>();
-	const telekomIcon = createRef<Img>();
-	
-	view.add(<Img ref={tSystemsIcon} src={tsystemsLogo}
-		opacity={0}
-		scale={1}
-		y={220}
-		x={550}
-	/>);
-	view.add(<Img ref={telekomIcon} src={telekomLogo}
-		opacity={0}
-		scale={0.38}
-		y={210}
-		x={210}/>);
 
-	yield* all(
-		verdiIcon().opacity(1, 1),
-		tSystemsIcon().opacity(1, 1),
-		telekomIcon().opacity(1, 1),
-	)
+  const tSystemsIcon = createRef<Img>();
+  const telekomIcon = createRef<Img>();
+
+  view.add(<Img ref={tSystemsIcon} src={tsystemsLogo}
+    opacity={0}
+    scale={1}
+    y={220}
+    x={550}
+  />);
+  view.add(<Img ref={telekomIcon} src={telekomLogo}
+    opacity={0}
+    scale={0.38}
+    y={210}
+    x={210} />);
+
+  yield* all(
+    verdiIcon().opacity(1, 1),
+    tSystemsIcon().opacity(1, 1),
+    telekomIcon().opacity(1, 1),
+  )
 
   yield* beginSlide("Cleanup supervisory board");
 
@@ -331,13 +331,13 @@ export default makeScene2D(function* (view) {
 
   yield* beginSlide("Show Greenhouse Emissions");
 
-	const greenHouseEmissionsRef = createRef<Img>();
+  const greenHouseEmissionsRef = createRef<Img>();
 
-  view.add(<Img src={greenHouseEmissionsImage} width={1300} radius={50} ref={greenHouseEmissionsRef} scale={0} y={75}/>);
-  
+  view.add(<Img src={greenHouseEmissionsImage} width={1300} radius={50} ref={greenHouseEmissionsRef} scale={0} y={75} />);
+
   const highlightRect = createRef<Rect>();
-  
-  view.add(<Rect ref={highlightRect} fill={null} stroke={"red"} lineWidth={10} opacity={0} radius={10} width={260} height={550} y={85} x={-370}/>);
+
+  view.add(<Rect ref={highlightRect} fill={null} stroke={"red"} lineWidth={10} opacity={0} radius={10} width={260} height={550} y={85} x={-370} />);
 
   yield* greenHouseEmissionsRef().scale(1, 1);
 
@@ -375,22 +375,22 @@ export default makeScene2D(function* (view) {
   greenHouseEmissionsRef().remove();
   highlightRect().remove();
 
-  
+
   const theProblemImage = createRef<Img>();
-  view.add(<Img ref={theProblemImage} src={fieteProblemImage} scale={0.5} y={-100} x={-1000} opacity={0}/>);
+  view.add(<Img ref={theProblemImage} src={fieteProblemImage} scale={0.5} y={-100} x={-1000} opacity={0} />);
 
 
   const imageTheProblem = createRef<Img>();
-  view.add(<Img ref={imageTheProblem} src={fieteProblemImage} scale={0.6} y={100} opacity={0} radius={50}/>);
+  view.add(<Img ref={imageTheProblem} src={fieteProblemImage} scale={0.6} y={100} opacity={0} radius={50} />);
   makeShadow(imageTheProblem, 50);
   yield* beginSlide("Fiete - The Problem");
-  
+
   yield* heading().text("The Problem", 1);
   yield* all(
     imageTheProblem().opacity(1, 1),
     imageTheProblem().x(0, 1),
   );
-    
+
 
   yield* beginSlide("Fiete - The Idea");
   yield* all(
@@ -399,9 +399,9 @@ export default makeScene2D(function* (view) {
   );
 
   const imageTheIdea1 = createRef<Img>();
-  view.add(<Img ref={imageTheIdea1} src={fieteTheIdea1} scale={0.6} y={100} opacity={0} radius={50}/>);
+  view.add(<Img ref={imageTheIdea1} src={fieteTheIdea1} scale={0.6} y={100} opacity={0} radius={50} />);
   makeShadow(imageTheIdea1, 50);
-  
+
   yield* all(
     imageTheIdea1().opacity(1, 1),
     imageTheIdea1().x(0, 1),
@@ -409,9 +409,9 @@ export default makeScene2D(function* (view) {
 
 
   const textTheIdea1 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea1} text="Reduce Emissions" x={-500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={textTheIdea1} text="Reduce Emissions" x={-500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
   yield* beginSlide("Fiete - The Idea 1 Show Text");
-  
+
   yield* all(
     imageTheIdea1().scale(0.25, 1),
     imageTheIdea1().x(-500, 1),
@@ -421,14 +421,14 @@ export default makeScene2D(function* (view) {
   yield* textTheIdea1().opacity(1, 1);
 
   const imageTheIdea2 = createRef<Img>();
-  view.add(<Img ref={imageTheIdea2} src={fieteTheIdea2} scale={0.6} y={100} opacity={0} radius={50}/>);
+  view.add(<Img ref={imageTheIdea2} src={fieteTheIdea2} scale={0.6} y={100} opacity={0} radius={50} />);
   yield* beginSlide("Fiete - The Idea 2");
   makeShadow(imageTheIdea2, 50);
 
   yield* imageTheIdea2().opacity(1, 1);
 
   const textTheIdea2 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea2} text="Create Employee Awareness" x={500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={textTheIdea2} text="Create Employee Awareness" x={500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
   yield* beginSlide("Fiete - The Idea 2 Show Text");
 
   yield* all(
@@ -440,14 +440,14 @@ export default makeScene2D(function* (view) {
   yield* textTheIdea2().opacity(1, 1);
 
   const imageTheIdea3 = createRef<Img>();
-  view.add(<Img ref={imageTheIdea3} src={fieteTheIdea3} scale={0.7} y={100} opacity={0} radius={50}/>);
+  view.add(<Img ref={imageTheIdea3} src={fieteTheIdea3} scale={0.7} y={100} opacity={0} radius={50} />);
   yield* beginSlide("Fiete - The Idea 3");
   makeShadow(imageTheIdea3, 50);
 
   yield* imageTheIdea3().opacity(1, 1);
 
   const textTheIdea3 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea3} text="Reach Climate Goals" x={-500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={textTheIdea3} text="Reach Climate Goals" x={-500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
 
   yield* beginSlide("Fiete - The Idea 3 Show Text");
 
@@ -460,14 +460,14 @@ export default makeScene2D(function* (view) {
   yield* textTheIdea3().opacity(1, 1);
 
   const imageTheIdea4 = createRef<Img>();
-  view.add(<Img ref={imageTheIdea4} src={fieteTheIdea4} scale={0.6} y={100} opacity={0} radius={50}/>);
+  view.add(<Img ref={imageTheIdea4} src={fieteTheIdea4} scale={0.6} y={100} opacity={0} radius={50} />);
   yield* beginSlide("Fiete - The Idea 4");
   makeShadow(imageTheIdea4, 50);
 
   yield* imageTheIdea4().opacity(1, 1);
 
   const textTheIdea4 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea4} text="Develop a Mobile Platform" x={500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={textTheIdea4} text="Develop a Mobile Platform" x={500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
 
   yield* beginSlide("Fiete - The Idea 4 Show Text");
 
@@ -506,11 +506,11 @@ export default makeScene2D(function* (view) {
   const requirementsText1 = createRef<Txt>();
   const requirementsText2 = createRef<Txt>();
   const requirementsText3 = createRef<Txt>();
-  view.add(<Txt ref={requirementsText1} text="Data Collection" x={-500} y={-50} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
-  view.add(<Txt ref={requirementsText2} text="Overview" x={-500} y={100} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
-  view.add(<Txt ref={requirementsText3} text="Evaluation" x={-500} y={250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={requirementsText1} text="Data Collection" x={-500} y={-50} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={requirementsText2} text="Overview" x={-500} y={100} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={requirementsText3} text="Evaluation" x={-500} y={250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
   const requirementsKlammer = createRef<Txt>();
-  view.add(<Txt ref={requirementsKlammer} text="}" x={-100} y={90} fontWeight={200} fontSize={600} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  view.add(<Txt ref={requirementsKlammer} text="}" x={-100} y={90} fontWeight={200} fontSize={600} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
   yield* beginSlide("Fiete - Requirements");
 
   yield* heading().text("Requirements", 1);
@@ -524,7 +524,7 @@ export default makeScene2D(function* (view) {
   yield* requirementsKlammer().opacity(1, 1);
 
   const requirementsImage = createRef<Img>();
-  view.add(<Img ref={requirementsImage} src={fieteRequirements} scale={1} y={100} x={300} opacity={0} radius={50}/>);
+  view.add(<Img ref={requirementsImage} src={fieteRequirements} scale={1} y={100} x={300} opacity={0} radius={50} />);
   makeShadow(requirementsImage, 50);
 
   yield* all(
