@@ -24,6 +24,9 @@ import superVisoryBoardLeftSideImage from "./assets/intro/SupervisoryBoardLeftSi
 
 import verdiLogo from "./assets/intro/verdiLogo.svg";
 
+import greenHouseEmissionsImage from "./assets/intro/greenhouseEmissions.png";
+
+
 export default makeScene2D(function* (view) {
   // Create your animations here
   const background = createRef<Rect>();
@@ -76,14 +79,6 @@ export default makeScene2D(function* (view) {
 
   hiderForTSystems().remove();
 
-  yield* beginSlide("Show Topic");
-
-  yield* all(
-    telekomLogoRef().scale(0.2, 1),
-    telekomLogoRef().position({ x: -850, y: -450 }, 1),
-    tsystemsLogoRef().scale(0.4, 1),
-    tsystemsLogoRef().position({ x: -700, y: -445 }, 1)
-  );
 
   const windmillRefs = createRef<Img>();
   const backgroundTree1 = createRef<Img>();
@@ -126,19 +121,29 @@ export default makeScene2D(function* (view) {
   makeShadow(forgroundTree2, 50);
   makeShadow(windmillRefs, 50);
 
+  yield* beginSlide("Show Topic");
+
+  yield* all(
+    telekomLogoRef().scale(0.2, 1),
+    telekomLogoRef().position({ x: -850, y: -450 }, 1),
+    tsystemsLogoRef().scale(0.4, 1),
+    tsystemsLogoRef().position({ x: -700, y: -445 }, 1)
+  );
+
+
   yield* all(
     backgroundTree1().y(165, 1),
     backgroundTree2().y(165, 1),
     forgroundTree1().y(305, 1.5),
     forgroundTree2().y(305, 1.5),
-    background().fill("#002C04", 1.4),
+    background().fill("#002C04", 1.5),
     delay(0.5, windmillRefs().y(130, 1))
   );
 
   makeShadow(csrImage, 50);
   yield* beginSlide("Show CSR Icon");
 
-  yield* all(csrImage().y(0, 1));
+  yield* csrImage().y(0, 1);
 
   yield* beginSlide("Clean up Einleitung");
 
@@ -193,7 +198,7 @@ export default makeScene2D(function* (view) {
     delay(1, exceutiveBoardImages().opacity(1, 2))
   );
 
-  yield* beginSlide("Show Supervisory Board");
+  yield* beginSlide("Cleanup Executive Board");
 
   yield* all(
     exceutiveBoardImages().opacity(0, 1),
@@ -201,6 +206,8 @@ export default makeScene2D(function* (view) {
   );
 
 	exceutiveBoardImages().remove();
+
+  yield* beginSlide("Show Supervisory Board");
 
   const supervisoryBoardImage = createRef<Img>();
   view.add(
@@ -287,7 +294,57 @@ export default makeScene2D(function* (view) {
 		telekomIcon().opacity(1, 1),
 	)
 
-	
+  yield* beginSlide("Cleanup supervisory board");
+
+  yield* all(
+    supervisoryBoardImage().opacity(0, 1),
+    telekomLogoRef2().opacity(0, 1),
+    lineBetween().opacity(0, 1),
+    verdiIcon().opacity(0, 1),
+    tSystemsIcon().opacity(0, 1),
+    telekomIcon().opacity(0, 1),
+    executiveBoardHeading().text("", 1),
+  );
+
+  yield* beginSlide("Show Greenhouse Emissions");
+
+	const greenHouseEmissionsRef = createRef<Img>();
+
+  view.add(<Img src={greenHouseEmissionsImage} width={1300} radius={50} ref={greenHouseEmissionsRef} scale={0} y={75}/>);
+  
+  const highlightRect = createRef<Rect>();
+  
+  view.add(<Rect ref={highlightRect} fill={null} stroke={"red"} lineWidth={10} opacity={0} radius={10} width={260} height={550} y={85} x={-370}/>);
+
+  yield* greenHouseEmissionsRef().scale(1, 1);
+
+  yield* beginSlide("Show Highlight Rect");
+
+  yield* highlightRect().opacity(1, 1);
+
+  yield* beginSlide("Move Box First Time");
+
+  yield* all(
+    highlightRect().x(0, 1),
+    highlightRect().width(400, 1),
+  );
+
+  yield* beginSlide("Move Box Second Time");
+
+  yield* all(
+    highlightRect().x(350, 1),
+    highlightRect().width(170, 1),
+  );
+
+  yield* beginSlide("Move Box Third Time");
+
+  yield* all(
+    highlightRect().x(465, 1),
+    highlightRect().width(100, 1),
+  );
+
+
+  yield* beginSlide("Show Greenhouse Emissions"); 
 
   yield* beginSlide("End");
 });
