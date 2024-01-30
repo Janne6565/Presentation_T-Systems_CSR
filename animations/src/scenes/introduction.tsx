@@ -542,7 +542,5 @@ export default makeScene2D(function* (view) {
     heading().text("", 1),
   );
 
-
-
   yield* beginSlide("End");
 });
