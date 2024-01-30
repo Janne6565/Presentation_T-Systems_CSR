@@ -26,6 +26,16 @@ import verdiLogo from "./assets/intro/verdiLogo.svg";
 
 import greenHouseEmissionsImage from "./assets/intro/greenhouseEmissions.png";
 
+import fieteProblemImage from "./assets/fiete/the_problem.png";
+import fieteEcoShift from "./assets/fiete/eco_shift.png";
+import fietePositiveEffects from "./assets/fiete/positive_effects.png";
+import fieteTheIdea1 from "./assets/fiete/the_idea1.png";
+import fieteTheIdea2 from "./assets/fiete/the_idea2.png";
+import fieteTheIdea3 from "./assets/fiete/the_idea3.png";
+import fieteTheIdea4 from "./assets/fiete/the_idea4.png";
+import fieteRequirements from "./assets/fiete/requirements.svg";
+
+
 
 export default makeScene2D(function* (view) {
   // Create your animations here
@@ -154,7 +164,7 @@ export default makeScene2D(function* (view) {
     forgroundTree2().y(1000, 1),
     windmillRefs().y(view.height(), 1),
     csrImage().y(view.height(), 1),
-    background().fill("#000", 1)
+    background().fill("#0A0A0A", 1)
   );
 
   backgroundTree1().remove();
@@ -166,17 +176,20 @@ export default makeScene2D(function* (view) {
 
   yield* beginSlide("Show Executive Board");
 
-  const executiveBoardHeading = createRef<Txt>();
+  const heading = createRef<Txt>();
   const exceutiveBoardImages = createRef<Img>();
 
   view.add(
     <Txt
-      ref={executiveBoardHeading}
+      ref={heading}
       text="Executive Board"
       x={0}
       y={-view.height() / 4 - 100}
-      fill={"white"}
+      fontWeight={200}
+      fontSize={80}
+      fill={"#FF0090"}
       opacity={0}
+      fontFamily={"TeleNeoWeb"}
     />
   );
   view.add(
@@ -194,7 +207,7 @@ export default makeScene2D(function* (view) {
   makeShadow(exceutiveBoardImages, 50);
 
   yield* all(
-    executiveBoardHeading().opacity(1, 1),
+    heading().opacity(1, 1),
     delay(1, exceutiveBoardImages().opacity(1, 2))
   );
 
@@ -202,7 +215,7 @@ export default makeScene2D(function* (view) {
 
   yield* all(
     exceutiveBoardImages().opacity(0, 1),
-    delay(1, executiveBoardHeading().text("Supervisory Board", 1))
+    delay(1, heading().text("Supervisory Board", 1))
   );
 
 	exceutiveBoardImages().remove();
@@ -224,6 +237,7 @@ export default makeScene2D(function* (view) {
   );
 
   yield* all(supervisoryBoardImage().opacity(1, 1));
+
 
   const telekomLogoRef2 = createRef<Img>();
   view.add(
@@ -259,6 +273,8 @@ export default makeScene2D(function* (view) {
     </Spline>
   );
   lineBetween().start(0).end(0);
+
+  yield* beginSlide("Show Verdi Icon");
 
   yield* all(
     lineBetween().start(0, 1),
@@ -303,8 +319,15 @@ export default makeScene2D(function* (view) {
     verdiIcon().opacity(0, 1),
     tSystemsIcon().opacity(0, 1),
     telekomIcon().opacity(0, 1),
-    executiveBoardHeading().text("", 1),
+    heading().text("", 1),
   );
+
+  supervisoryBoardImage().remove();
+  telekomLogoRef2().remove();
+  lineBetween().remove();
+  verdiIcon().remove();
+  tSystemsIcon().remove();
+  telekomIcon().remove();
 
   yield* beginSlide("Show Greenhouse Emissions");
 
@@ -343,8 +366,119 @@ export default makeScene2D(function* (view) {
     highlightRect().width(100, 1),
   );
 
+  yield* beginSlide("Cleanup Greenhouse emissions");
 
-  yield* beginSlide("Show Greenhouse Emissions"); 
+  yield* all(
+    highlightRect().opacity(0, 1),
+    greenHouseEmissionsRef().opacity(0, 1),
+  );
+  greenHouseEmissionsRef().remove();
+  highlightRect().remove();
+
+  
+  const theProblemImage = createRef<Img>();
+  view.add(<Img ref={theProblemImage} src={fieteProblemImage} scale={0.5} y={-100} x={-1000} opacity={0}/>);
+
+
+  const imageTheProblem = createRef<Img>();
+  view.add(<Img ref={imageTheProblem} src={fieteProblemImage} scale={0.6} y={100} opacity={0} radius={50}/>);
+  makeShadow(imageTheProblem, 50);
+  yield* beginSlide("Fiete - The Problem");
+  
+  yield* heading().text("The Problem", 1);
+  yield* all(
+    imageTheProblem().opacity(1, 1),
+    imageTheProblem().x(0, 1),
+  );
+    
+
+  yield* beginSlide("Fiete - The Idea");
+  yield* all(
+    imageTheProblem().opacity(0, 1),
+    heading().text("The Idea", 1),
+  );
+
+  const imageTheIdea1 = createRef<Img>();
+  view.add(<Img ref={imageTheIdea1} src={fieteTheIdea1} scale={0.6} y={100} opacity={0} radius={50}/>);
+  makeShadow(imageTheIdea1, 50);
+  
+  yield* all(
+    imageTheIdea1().opacity(1, 1),
+    imageTheIdea1().x(0, 1),
+  );
+
+
+  const textTheIdea1 = createRef<Txt>();
+  view.add(<Txt ref={textTheIdea1} text="Reduce Emissions" x={-500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  yield* beginSlide("Fiete - The Idea 1 Show Text");
+  
+  yield* all(
+    imageTheIdea1().scale(0.25, 1),
+    imageTheIdea1().x(-500, 1),
+    imageTheIdea1().y(-50, 1),
+  );
+
+  yield* textTheIdea1().opacity(1, 1);
+
+  const imageTheIdea2 = createRef<Img>();
+  view.add(<Img ref={imageTheIdea2} src={fieteTheIdea2} scale={0.6} y={100} opacity={0} radius={50}/>);
+  yield* beginSlide("Fiete - The Idea 2");
+  makeShadow(imageTheIdea2, 50);
+
+  yield* imageTheIdea2().opacity(1, 1);
+
+  const textTheIdea2 = createRef<Txt>();
+  view.add(<Txt ref={textTheIdea2} text="Create Employee Awareness" x={500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+  yield* beginSlide("Fiete - The Idea 2 Show Text");
+
+  yield* all(
+    imageTheIdea2().scale(0.24, 1),
+    imageTheIdea2().x(500, 1),
+    imageTheIdea2().y(-50, 1),
+  );
+
+  yield* textTheIdea2().opacity(1, 1);
+
+  const imageTheIdea3 = createRef<Img>();
+  view.add(<Img ref={imageTheIdea3} src={fieteTheIdea3} scale={0.7} y={100} opacity={0} radius={50}/>);
+  yield* beginSlide("Fiete - The Idea 3");
+  makeShadow(imageTheIdea3, 50);
+
+  yield* imageTheIdea3().opacity(1, 1);
+
+  const textTheIdea3 = createRef<Txt>();
+  view.add(<Txt ref={textTheIdea3} text="Reach Climate Goals" x={-500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+
+  yield* beginSlide("Fiete - The Idea 3 Show Text");
+
+  yield* all(
+    imageTheIdea3().scale(0.25, 1),
+    imageTheIdea3().x(-500, 1),
+    imageTheIdea3().y(350, 1),
+  );
+
+  yield* textTheIdea3().opacity(1, 1);
+
+  const imageTheIdea4 = createRef<Img>();
+  view.add(<Img ref={imageTheIdea4} src={fieteTheIdea4} scale={0.6} y={100} opacity={0} radius={50}/>);
+  yield* beginSlide("Fiete - The Idea 4");
+  makeShadow(imageTheIdea4, 50);
+
+  yield* imageTheIdea4().opacity(1, 1);
+
+  const textTheIdea4 = createRef<Txt>();
+  view.add(<Txt ref={textTheIdea4} text="Develop a Mobile Platform" x={500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"}/>);
+
+  yield* beginSlide("Fiete - The Idea 4 Show Text");
+
+  yield* all(
+    imageTheIdea4().scale(0.25, 1),
+    imageTheIdea4().x(500, 1),
+    imageTheIdea4().y(350, 1),
+  );
+
+  yield* textTheIdea4().opacity(1, 1);
+
 
   yield* beginSlide("End");
 });
