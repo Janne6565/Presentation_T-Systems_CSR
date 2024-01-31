@@ -179,7 +179,7 @@ presenter.onInfoChanged.subscribe((info) => {
         // get private field lookup of slides
         const lookup = presenter.playback.currentScene.slides.lookup;
         console.log("Here is modified Lookup:", lookup);
-        const nameOfSlideShouldBe = Array.of(lookup.keys())[currentIndexShouldBe - 1];
+        const nameOfSlideShouldBe = Array.from(lookup.keys())[currentIndexShouldBe - 1];
         console.log(nameOfSlideShouldBe);
         if (typeof (nameOfSlideShouldBe) == "string") {
           presenter.requestSlide(nameOfSlideShouldBe);
