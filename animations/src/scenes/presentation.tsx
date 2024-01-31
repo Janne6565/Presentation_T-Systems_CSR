@@ -521,29 +521,19 @@ export default makeScene2D(function* (view) {
   view.add(<Txt ref={requirementsText3} text="Evaluation" x={-500} y={250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
   const requirementsKlammer = createRef<Txt>();
   view.add(<Txt ref={requirementsKlammer} text="}" x={-100} y={90} fontWeight={200} fontSize={600} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
-
-  yield* beginSlide("Fiete - Requirements - Text 1");
-
-  yield* requirementsText1().opacity(1, 1);
-  
-  yield* beginSlide("Fiete - Requirements - Text 2");
-
-  yield* requirementsText2().opacity(1, 1);
-  
-  yield* beginSlide("Fiete - Requirements - Text 3");
-  
-  yield* requirementsText3().opacity(1, 1);
-  
-
   const requirementsImage = createRef<Img>();
   view.add(<Img ref={requirementsImage} src={fieteRequirements} scale={1} y={50} x={300} opacity={0} radius={50} />);
   makeShadow(requirementsImage, 50);
-  yield* beginSlide("Fiete - Requirements - Klammer");
+
+  yield* beginSlide("Fiete - Requirements - Text 1");
 
   yield* all(
+    requirementsText1().opacity(1, 1),
+    requirementsText2().opacity(1, 1),
+    requirementsText3().opacity(1, 1),
     requirementsKlammer().opacity(1, 1),
     requirementsImage().opacity(1, 1),
-  );
+  )
 
   yield* beginSlide("Cleanup - fiete - Requirements");
 
@@ -759,9 +749,5 @@ export default makeScene2D(function* (view) {
   yield* all(
     thankYouText().opacity(0, 1),
   );
-
-
-
-
 
 });
