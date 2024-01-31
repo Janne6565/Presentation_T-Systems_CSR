@@ -181,10 +181,11 @@ presenter.onInfoChanged.subscribe((info) => {
   currentInfo = info;
   if (info && info.index != null && info.index < currentIndexShouldBe) {
     if (currentIndexShouldBe > info.index + 1) {
-      const heheGivePrivate =  Object.values(presenter.playback.currentScene.slides);
-      const nameOfSlideShouldBe = Array.from(heheGivePrivate["lookup"].keys())[currentIndexShouldBe - 1];
-      console.log("Privates:", heheGivePrivate);
-      console.log("Name of slide should be:", nameOfSlideShouldBe);
+      // get private field lookup of slides
+      const lookup = (presenter.playback.currentScene.slides as PublicSlides).getLookup();
+      console.log("Here is modified Lookup:", lookup);
+      const nameOfSlideShouldBe = Array.of(lookup.keys())[currentIndexShouldBe - 1];
+      console.log(nameOfSlideShouldBe);
       if (typeof(nameOfSlideShouldBe) == "string") {
         presenter.requestSlide(nameOfSlideShouldBe);
       }
