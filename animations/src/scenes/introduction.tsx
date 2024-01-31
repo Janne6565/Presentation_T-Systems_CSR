@@ -189,7 +189,7 @@ export default makeScene2D(function* (view) {
       fontSize={80}
       fill={"#FF0090"}
       opacity={0}
-      fontFamily={"TeleNeoWeb"}
+      fontFamily={"Roboto"}
     />
   );
   view.add(
@@ -409,7 +409,7 @@ export default makeScene2D(function* (view) {
 
 
   const textTheIdea1 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea1} text="Reduce Emissions" x={-500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={textTheIdea1} text="Reduce Emissions" x={-500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
   yield* beginSlide("Fiete - The Idea 1 Show Text");
 
   yield* all(
@@ -428,7 +428,7 @@ export default makeScene2D(function* (view) {
   yield* imageTheIdea2().opacity(1, 1);
 
   const textTheIdea2 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea2} text="Create Employee Awareness" x={500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={textTheIdea2} text="Create Employee Awareness" x={500} y={-250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
   yield* beginSlide("Fiete - The Idea 2 Show Text");
 
   yield* all(
@@ -447,7 +447,7 @@ export default makeScene2D(function* (view) {
   yield* imageTheIdea3().opacity(1, 1);
 
   const textTheIdea3 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea3} text="Reach Climate Goals" x={-500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={textTheIdea3} text="Reach Climate Goals" x={-500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
 
   yield* beginSlide("Fiete - The Idea 3 Show Text");
 
@@ -467,7 +467,7 @@ export default makeScene2D(function* (view) {
   yield* imageTheIdea4().opacity(1, 1);
 
   const textTheIdea4 = createRef<Txt>();
-  view.add(<Txt ref={textTheIdea4} text="Develop a Mobile Platform" x={500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={textTheIdea4} text="Develop a Mobile Platform" x={500} y={160} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
 
   yield* beginSlide("Fiete - The Idea 4 Show Text");
 
@@ -506,11 +506,11 @@ export default makeScene2D(function* (view) {
   const requirementsText1 = createRef<Txt>();
   const requirementsText2 = createRef<Txt>();
   const requirementsText3 = createRef<Txt>();
-  view.add(<Txt ref={requirementsText1} text="Data Collection" x={-500} y={-50} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
-  view.add(<Txt ref={requirementsText2} text="Overview" x={-500} y={100} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
-  view.add(<Txt ref={requirementsText3} text="Evaluation" x={-500} y={250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={requirementsText1} text="Data Collection" x={-500} y={-50} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
+  view.add(<Txt ref={requirementsText2} text="Overview" x={-500} y={100} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
+  view.add(<Txt ref={requirementsText3} text="Evaluation" x={-500} y={250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
   const requirementsKlammer = createRef<Txt>();
-  view.add(<Txt ref={requirementsKlammer} text="}" x={-100} y={90} fontWeight={200} fontSize={600} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
+  view.add(<Txt ref={requirementsKlammer} text="}" x={-100} y={90} fontWeight={200} fontSize={600} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
 
   yield* beginSlide("Fiete - Requirements - Text 1");
 
