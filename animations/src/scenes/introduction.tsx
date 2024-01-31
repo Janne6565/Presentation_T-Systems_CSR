@@ -35,7 +35,12 @@ import fieteTheIdea3 from "./assets/fiete/the_idea3.png";
 import fieteTheIdea4 from "./assets/fiete/the_idea4.png";
 import fieteRequirements from "./assets/fiete/requirements.svg";
 
-
+import annikaMagentaBees from "./assets/annika/magentaBees.jpg";
+import annikaDigitalBeehives1 from "./assets/annika/digitalBeehives1.jpg";
+import annikaDigitalBeehives2 from "./assets/annika/digitalBeehives2.jpg";
+import annikaDigitalHoneyJars from "./assets/annika/digitalHoneyJars.png";
+import unGoals from "./assets/annika/unGoals.jpg";
+import annikaBenefitsOfCsr from "./assets/annika/benefitsCSR.png";
 
 export default makeScene2D(function* (view) {
   // Create your animations here
@@ -575,9 +580,99 @@ export default makeScene2D(function* (view) {
 
   yield* all(
     positiveEffectsImage().opacity(0, 1),
-    heading().text("", 1),
+    heading().text("Magenta Bees", 1),
+  );
+  
+  const magentaBeesImage = createRef<Img>();
+  view.add(<Img ref={magentaBeesImage} src={annikaMagentaBees} scale={0.7} y={100} opacity={0} radius={50} />);
+  makeShadow(magentaBeesImage, 50);
+  yield* beginSlide("Annika - Magenta Bees");
+
+  yield* all(
+    magentaBeesImage().opacity(1, 1),
   );
 
+  yield* beginSlide("Cleanup - Annika - Magenta Bees");
+  
+  yield* all(
+    magentaBeesImage().opacity(0, 1),
+    heading().text("Digital Beehives", 1),
+  );
+
+  const digitalBeehivesImage1 = createRef<Img>();
+  view.add(<Img ref={digitalBeehivesImage1} src={annikaDigitalBeehives1} scale={1} y={100} x={-300} opacity={0} radius={50} />);
+  makeShadow(digitalBeehivesImage1, 50);
+  const digitalBeehivesImage2 = createRef<Img>();
+  view.add(<Img ref={digitalBeehivesImage2} src={annikaDigitalBeehives2} scale={0.8} y={100} x={400} opacity={0} radius={50} />);
+  makeShadow(digitalBeehivesImage2, 50);
+  yield* beginSlide("Annika - Digital Beehives 1");
+
+  yield* all(
+    digitalBeehivesImage1().opacity(1, 1),
+  );
+
+  yield* beginSlide("Annika - Digital Beehives 2");
+
+  yield* all(
+    digitalBeehivesImage2().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - Annika - Digital Beehives");
+
+  yield* all(
+    digitalBeehivesImage1().opacity(0, 1),
+    digitalBeehivesImage2().opacity(0, 1),
+    heading().text("Digital Honey Jars", 1),
+  );
+
+  const digitalHoneyJarsImage = createRef<Img>();
+  view.add(<Img ref={digitalHoneyJarsImage} src={annikaDigitalHoneyJars} scale={0.7} y={100} opacity={0} radius={50} />);
+  makeShadow(digitalHoneyJarsImage, 50);
+  yield* beginSlide("Annika - Digital Honey Jars");
+
+  yield* all(
+    digitalHoneyJarsImage().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - Annika - Digital Honey Jars");
+
+  yield* all(
+    digitalHoneyJarsImage().opacity(0, 1),
+    heading().text("UN Goals", 1),
+  );
+
+  const unGoalsImage = createRef<Img>();
+  view.add(<Img ref={unGoalsImage} src={unGoals} scale={0.85 } y={100} opacity={0} radius={50} />);
+  makeShadow(unGoalsImage, 50);
+  yield* beginSlide("Annika - UN Goals");
+
+  yield* all(
+    unGoalsImage().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - Annika - UN Goals");
+
+  yield* all(
+    unGoalsImage().opacity(0, 1),
+    heading().text("Benefits of CSR", 1),
+  );
+
+  const benefitsOfCsrImage = createRef<Img>();
+  view.add(<Img ref={benefitsOfCsrImage} src={annikaBenefitsOfCsr} scale={1.5} y={100} opacity={0} radius={50} />);
+  makeShadow(benefitsOfCsrImage, 50);
+
+  yield* beginSlide("Annika - Benefits of CSR");
+
+  yield* all(
+    benefitsOfCsrImage().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - Annika - Benefits of CSR");
+
+  yield* all(
+    benefitsOfCsrImage().opacity(0, 1),
+    heading().text("", 1),
+  );
 
   yield* beginSlide("End");
 });
