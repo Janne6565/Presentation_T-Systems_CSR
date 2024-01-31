@@ -3,8 +3,16 @@ import {
   PresenterInfo,
   Vector2,
   Project,
+  Slides,
 } from "@motion-canvas/core";
 import projectImport from "../public/animations/project.js";
+
+class PublicSlides extends Slides {
+  public getLookup() {
+    return this.lookup;
+  }
+}
+
 
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
@@ -173,6 +181,9 @@ presenter.onInfoChanged.subscribe((info) => {
   currentInfo = info;
   if (info && info.index != null && info.index < currentIndexShouldBe) {
     if (currentIndexShouldBe > info.index + 1) {
+      const heheGivePrivate =  Object.values(presenter.playback.currentScene.slides);
+      const nameOfSlideShouldBe = Array.from(heheGivePrivate["lookup"].keys())[currentIndexShouldBe - 1];
+
       presenter.requestSlide(presenter.playback.currentScene.slides[currentIndexShouldBe - 1])
     }
     presenter.resume();
