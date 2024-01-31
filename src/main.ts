@@ -179,6 +179,7 @@ connectWebsocketListen();
 
 presenter.onInfoChanged.subscribe((info) => {
   currentInfo = info;
+  console.log("TEST");
   if (info && info.index != null && info.index < currentIndexShouldBe) {
     if (currentIndexShouldBe > info.index + 1) {
       // get private field lookup of slides
