@@ -692,7 +692,7 @@ export default makeScene2D(function* (view) {
   view.add(<Img ref={imageCo2Scopes} src={co2Scopes} scale={1} y={120} opacity={0} radius={50} />);
   makeShadow(imageCo2Scopes, 50);
   const citeTelekom = createRef<Txt>();
-  view.add(<Txt ref={citeTelekom} text="[...] Bis 2025 werden wir bei unseren eigenen Emissionen (Scope 1 und 2) klimaneutral." y={-280} fontWeight={200} fontSize={30} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
+  view.add(<Txt ref={citeTelekom} text="[...] Until 2025 we will be climate neutral (scope 1 and 2) [translated]" y={-280} fontWeight={200} fontSize={30} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
   yield* beginSlide("Conclusion");
   
   yield* all(
