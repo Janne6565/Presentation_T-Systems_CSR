@@ -28,7 +28,7 @@ import greenHouseEmissionsImage from "./assets/intro/greenhouseEmissions.png";
 
 import fieteProblemImage from "./assets/fiete/the_problem.png";
 import fieteEcoShift from "./assets/fiete/eco_shift.png";
-import fietePositiveEffects from "./assets/fiete/positive_effects.png";
+import fietePositiveEffects from "./assets/fiete/positive_effects.jpg";
 import fieteTheIdea1 from "./assets/fiete/the_idea1.png";
 import fieteTheIdea2 from "./assets/fiete/the_idea2.png";
 import fieteTheIdea3 from "./assets/fiete/the_idea3.png";
@@ -543,8 +543,41 @@ export default makeScene2D(function* (view) {
     requirementsText3().opacity(0, 1),
     requirementsKlammer().opacity(0, 1),
     requirementsImage().opacity(0, 1),
+    heading().text("EcoShift", 1),
+  );
+
+  const ecoShiftImage = createRef<Img>();
+  view.add(<Img ref={ecoShiftImage} src={fieteEcoShift} scale={0.7} y={100} opacity={0} radius={50} />);
+  makeShadow(ecoShiftImage, 50);
+  yield* beginSlide("Fiete - EcoShift");
+  
+  yield* all(
+    ecoShiftImage().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - fiete - EcoShift");
+
+  yield* all(
+    ecoShiftImage().opacity(0, 1),
+    heading().text("Positive Effects", 1),
+  );
+
+  const positiveEffectsImage = createRef<Img>();
+  view.add(<Img ref={positiveEffectsImage} src={fietePositiveEffects} scale={0.25} y={100} opacity={0} radius={50} />);
+  makeShadow(positiveEffectsImage, 50);
+  yield* beginSlide("Fiete - Positive Effects");
+
+  yield* all(
+    positiveEffectsImage().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - fiete - Positive Effects");
+
+  yield* all(
+    positiveEffectsImage().opacity(0, 1),
     heading().text("", 1),
   );
+
 
   yield* beginSlide("End");
 });
