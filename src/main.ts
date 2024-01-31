@@ -16,8 +16,8 @@ class PublicSlides extends Slides {
 
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  let expires = "expires="+ d.toUTCString();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
@@ -25,7 +25,7 @@ function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
+  for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
@@ -181,14 +181,19 @@ presenter.onInfoChanged.subscribe((info) => {
   currentInfo = info;
   if (info && info.index != null && info.index < currentIndexShouldBe) {
     if (currentIndexShouldBe > info.index + 1) {
-      console.log("TESTING");
-      // get private field lookup of slides
-      const lookup = (presenter.playback.currentScene.slides as PublicSlides).getLookup();
-      console.log("Here is modified Lookup:", lookup);
-      const nameOfSlideShouldBe = Array.of(lookup.keys())[currentIndexShouldBe - 1];
-      console.log(nameOfSlideShouldBe);
-      if (typeof(nameOfSlideShouldBe) == "string") {
-        presenter.requestSlide(nameOfSlideShouldBe);
+      try {
+
+        console.log("TESTING");
+        // get private field lookup of slides
+        const lookup = (presenter.playback.currentScene.slides as PublicSlides).getLookup();
+        console.log("Here is modified Lookup:", lookup);
+        const nameOfSlideShouldBe = Array.of(lookup.keys())[currentIndexShouldBe - 1];
+        console.log(nameOfSlideShouldBe);
+        if (typeof (nameOfSlideShouldBe) == "string") {
+          presenter.requestSlide(nameOfSlideShouldBe);
+        }
+      } catch (e) {
+        console.log(e);
       }
     }
     presenter.resume();
