@@ -173,7 +173,7 @@ presenter.onInfoChanged.subscribe((info) => {
   currentInfo = info;
   if (info && info.index != null && info.index < currentIndexShouldBe) {
     if (currentIndexShouldBe > info.index + 1) {
-      presenter.requestNextSlide();
+      presenter.requestSlide(presenter.playback.currentScene.slides[currentIndexShouldBe - 1])
     }
     presenter.resume();
   }
@@ -275,3 +275,5 @@ document.addEventListener("mousemove", (event) => {
     document.body.classList.remove("mouseHide");
   }
 });
+
+console.log(presenter.playback.currentScene.slides);
