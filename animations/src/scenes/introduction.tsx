@@ -526,7 +526,7 @@ export default makeScene2D(function* (view) {
   
 
   const requirementsImage = createRef<Img>();
-  view.add(<Img ref={requirementsImage} src={fieteRequirements} scale={1} y={100} x={300} opacity={0} radius={50} />);
+  view.add(<Img ref={requirementsImage} src={fieteRequirements} scale={1} y={50} x={300} opacity={0} radius={50} />);
   makeShadow(requirementsImage, 50);
   yield* beginSlide("Fiete - Requirements - Klammer");
 
