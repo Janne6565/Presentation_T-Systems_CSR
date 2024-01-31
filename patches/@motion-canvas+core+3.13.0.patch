@@ -1,0 +1,13 @@
+diff --git a/node_modules/@motion-canvas/core/lib/scenes/Slides.d.ts b/node_modules/@motion-canvas/core/lib/scenes/Slides.d.ts
+index 5e999c2..a6fa44d 100644
+--- a/node_modules/@motion-canvas/core/lib/scenes/Slides.d.ts
++++ b/node_modules/@motion-canvas/core/lib/scenes/Slides.d.ts
+@@ -10,7 +10,7 @@ export declare class Slides {
+     private readonly scene;
+     get onChanged(): import("../events").SubscribableValueEvent<Slide[]>;
+     private readonly slides;
+-    private readonly lookup;
++    readonly lookup;
+     private readonly collisionLookup;
+     private current;
+     private canResume;

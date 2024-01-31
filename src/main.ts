@@ -7,13 +7,6 @@ import {
 } from "@motion-canvas/core";
 import projectImport from "../public/animations/project.js";
 
-class PublicSlides extends Slides {
-  public getLookup() {
-    return this.lookup;
-  }
-}
-
-
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -182,10 +175,9 @@ presenter.onInfoChanged.subscribe((info) => {
   if (info && info.index != null && info.index < currentIndexShouldBe) {
     if (currentIndexShouldBe > info.index + 1) {
       try {
-
         console.log("TESTING");
         // get private field lookup of slides
-        const lookup = (presenter.playback.currentScene.slides as PublicSlides).getLookup();
+        const lookup = presenter.playback.currentScene.slides.getLookup();
         console.log("Here is modified Lookup:", lookup);
         const nameOfSlideShouldBe = Array.of(lookup.keys())[currentIndexShouldBe - 1];
         console.log(nameOfSlideShouldBe);
