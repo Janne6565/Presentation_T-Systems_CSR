@@ -490,7 +490,7 @@ export default makeScene2D(function* (view) {
     textTheIdea2().opacity(0, 1),
     textTheIdea3().opacity(0, 1),
     textTheIdea4().opacity(0, 1),
-    heading().text("", 1),
+    heading().text("Requirements", 1),
   );
 
 
@@ -511,23 +511,27 @@ export default makeScene2D(function* (view) {
   view.add(<Txt ref={requirementsText3} text="Evaluation" x={-500} y={250} fontWeight={200} fontSize={60} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
   const requirementsKlammer = createRef<Txt>();
   view.add(<Txt ref={requirementsKlammer} text="}" x={-100} y={90} fontWeight={200} fontSize={600} fill={"white"} opacity={0} fontFamily={"TeleNeoWeb"} />);
-  yield* beginSlide("Fiete - Requirements");
 
-  yield* heading().text("Requirements", 1);
+  yield* beginSlide("Fiete - Requirements - Text 1");
 
   yield* requirementsText1().opacity(1, 1);
+  
+  yield* beginSlide("Fiete - Requirements - Text 2");
+
   yield* requirementsText2().opacity(1, 1);
+  
+  yield* beginSlide("Fiete - Requirements - Text 3");
+  
   yield* requirementsText3().opacity(1, 1);
-
-  yield* beginSlide("Fiete - Requirements - Klammer");
-
-  yield* requirementsKlammer().opacity(1, 1);
+  
 
   const requirementsImage = createRef<Img>();
   view.add(<Img ref={requirementsImage} src={fieteRequirements} scale={1} y={100} x={300} opacity={0} radius={50} />);
   makeShadow(requirementsImage, 50);
+  yield* beginSlide("Fiete - Requirements - Klammer");
 
   yield* all(
+    requirementsKlammer().opacity(1, 1),
     requirementsImage().opacity(1, 1),
   );
 
