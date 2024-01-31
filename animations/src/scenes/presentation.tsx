@@ -42,6 +42,10 @@ import annikaDigitalHoneyJars from "./assets/annika/digitalHoneyJars.png";
 import unGoals from "./assets/annika/unGoals.jpg";
 import annikaBenefitsOfCsr from "./assets/annika/benefitsCSR.png";
 
+import co2Scopes from "./assets/fazit/co2_scopes.webp";
+
+import sources from "./assets/Source.png";
+
 export default makeScene2D(function* (view) {
   // Create your animations here
   const background = createRef<Rect>();
@@ -403,6 +407,8 @@ export default makeScene2D(function* (view) {
     heading().text("The Idea", 1),
   );
 
+  imageTheProblem().remove();
+
   const imageTheIdea1 = createRef<Img>();
   view.add(<Img ref={imageTheIdea1} src={fieteTheIdea1} scale={0.6} y={100} opacity={0} radius={50} />);
   makeShadow(imageTheIdea1, 50);
@@ -498,7 +504,6 @@ export default makeScene2D(function* (view) {
     heading().text("Requirements", 1),
   );
 
-
   imageTheIdea1().remove();
   imageTheIdea2().remove();
   imageTheIdea3().remove();
@@ -551,6 +556,12 @@ export default makeScene2D(function* (view) {
     heading().text("EcoShift", 1),
   );
 
+  requirementsText1().remove();
+  requirementsText2().remove();
+  requirementsText3().remove();
+  requirementsKlammer().remove();
+  requirementsImage().remove();
+
   const ecoShiftImage = createRef<Img>();
   view.add(<Img ref={ecoShiftImage} src={fieteEcoShift} scale={0.7} y={100} opacity={0} radius={50} />);
   makeShadow(ecoShiftImage, 50);
@@ -567,6 +578,8 @@ export default makeScene2D(function* (view) {
     heading().text("Positive Effects", 1),
   );
 
+  ecoShiftImage().remove();
+
   const positiveEffectsImage = createRef<Img>();
   view.add(<Img ref={positiveEffectsImage} src={fietePositiveEffects} scale={0.25} y={100} opacity={0} radius={50} />);
   makeShadow(positiveEffectsImage, 50);
@@ -582,6 +595,8 @@ export default makeScene2D(function* (view) {
     positiveEffectsImage().opacity(0, 1),
     heading().text("Magenta Bees", 1),
   );
+
+  positiveEffectsImage().remove();
   
   const magentaBeesImage = createRef<Img>();
   view.add(<Img ref={magentaBeesImage} src={annikaMagentaBees} scale={0.7} y={100} opacity={0} radius={50} />);
@@ -598,6 +613,8 @@ export default makeScene2D(function* (view) {
     magentaBeesImage().opacity(0, 1),
     heading().text("Digital Beehives", 1),
   );
+
+  magentaBeesImage().remove();
 
   const digitalBeehivesImage1 = createRef<Img>();
   view.add(<Img ref={digitalBeehivesImage1} src={annikaDigitalBeehives1} scale={1} y={100} x={-300} opacity={0} radius={50} />);
@@ -625,6 +642,9 @@ export default makeScene2D(function* (view) {
     heading().text("Digital Honey Jars", 1),
   );
 
+  digitalBeehivesImage1().remove();
+  digitalBeehivesImage2().remove();
+
   const digitalHoneyJarsImage = createRef<Img>();
   view.add(<Img ref={digitalHoneyJarsImage} src={annikaDigitalHoneyJars} scale={0.7} y={100} opacity={0} radius={50} />);
   makeShadow(digitalHoneyJarsImage, 50);
@@ -640,6 +660,8 @@ export default makeScene2D(function* (view) {
     digitalHoneyJarsImage().opacity(0, 1),
     heading().text("UN Goals", 1),
   );
+
+  digitalHoneyJarsImage().remove();
 
   const unGoalsImage = createRef<Img>();
   view.add(<Img ref={unGoalsImage} src={unGoals} scale={0.85 } y={100} opacity={0} radius={50} />);
@@ -671,8 +693,75 @@ export default makeScene2D(function* (view) {
 
   yield* all(
     benefitsOfCsrImage().opacity(0, 1),
+    heading().text("Conclusion", 1),
+  );
+
+  benefitsOfCsrImage().remove();
+
+  const imageCo2Scopes = createRef<Img>();
+  view.add(<Img ref={imageCo2Scopes} src={co2Scopes} scale={1} y={120} opacity={0} radius={50} />);
+  makeShadow(imageCo2Scopes, 50);
+  const citeTelekom = createRef<Txt>();
+  view.add(<Txt ref={citeTelekom} text="[...] Bis 2025 werden wir bei unseren eigenen Emissionen (Scope 1 und 2) klimaneutral." y={-280} fontWeight={200} fontSize={30} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
+  yield* beginSlide("Conclusion");
+  
+  yield* all(
+    citeTelekom().opacity(1, 1),
+  );
+
+  yield* beginSlide("Conclusion - Co2 Scopes");
+
+  yield* all(
+    imageCo2Scopes().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - Conclusion");
+
+  yield* all(
+    imageCo2Scopes().opacity(0, 1),
+    citeTelekom().opacity(0, 1),
     heading().text("", 1),
   );
 
-  yield* beginSlide("End");
+  imageCo2Scopes().remove();
+  citeTelekom().remove();
+
+  yield* beginSlide("Sources");
+
+  yield* heading().text("Sources", 1);
+
+  yield* beginSlide("Sources - Telekom");
+
+  const source = createRef<Img>();
+  view.add(<Img ref={source} src={sources} scale={1.6} y={120} opacity={0} stroke={"gray"} lineWidth={10} radius={1} />);
+  makeShadow(source, 50);
+  yield* all(
+    source().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - Sources");
+
+  yield* all(
+    source().opacity(0, 1),
+    heading().y(-1000, 1),
+  );
+
+
+  const thankYouText = createRef<Txt>();
+  view.add(<Txt ref={thankYouText} text="Thank you for your attention!" y={-30} fontWeight={200} fontSize={80} fill={"white"} opacity={0} fontFamily={"Roboto"} />);
+
+  yield* all(
+    thankYouText().opacity(1, 1),
+  );
+
+  yield* beginSlide("Cleanup - Thank You");
+
+  yield* all(
+    thankYouText().opacity(0, 1),
+  );
+
+
+
+
+
 });

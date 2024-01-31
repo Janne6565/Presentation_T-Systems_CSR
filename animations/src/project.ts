@@ -1,6 +1,6 @@
 import { makeProject } from "@motion-canvas/core";
 
-import introduction from "./scenes/introduction?scene";
+import introduction from "./scenes/presentation?scene";
 
 import "./global.css";
 
